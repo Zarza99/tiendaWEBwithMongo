@@ -1,0 +1,47 @@
+{{#if productos}}
+<table class="table table-bordered table-hover table-dark">
+    <thead>
+        <tr class="text-center">
+            <th>Num.</th>
+            <th>Clave</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Fecha de lanzamiento</th>
+            <th>RAM</th>
+            <th>Almacenamiento</th>
+            <th>Cantidad de cámaras</th>
+            <th>Acciones</th>
+        </tr>
+    </thead> 
+    <tbody>
+        {{#each productos}}
+        <tr>
+            <td>{{@index}}</td>
+            <td>{{clave}}</td>
+            <td>{{marca}}</td>
+            <td>{{precio}}</td>
+            <td>{{fechaLanzamiento}}</td>
+            <td>{{ram}}</td>
+            <td>{{almacenamiento}}</td>
+            <td>{{cantidadCamaras}}</td>
+            <td>
+                {{#if opcion}}
+                <a href="/productos/{{_id}}/statusProductos" class="btn btn-warning">No disponible</a>
+                {{else}}
+                <a href="/productos/{{_id}}/statusProductos" class="btn btn-success">Disponible</a>
+                {{/if}}
+                <a href="/productos/{{_id}}/update" class="btn btn-info mt-2">Actualizar</a>
+                <a href="/productos/{{_id}}/delete" class="btn btn-danger mt-2">Eliminar</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="h-100 d-flex align-items-center justify-content-centyer">
+    <div class="text-center text-white">
+        <h1>No hay productos</h1>
+        <img src="/icons/dobby1.gif" class="w-50">
+    </div>
+</div>
+{{/if}}
